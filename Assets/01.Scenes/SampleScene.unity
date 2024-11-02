@@ -998,7 +998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1
-  ratio: 0.1
+  ratio: 0.12365
 --- !u!1001 &1461275076
 PrefabInstance:
   m_ObjectHideFlags: 0
