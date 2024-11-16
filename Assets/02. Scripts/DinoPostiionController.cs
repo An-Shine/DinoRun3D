@@ -7,6 +7,7 @@ public class DinoPostiionController : MonoBehaviour
     public float radius = 1f; // 배치될 원의 반지름
     public float ratio = 0.1f; // 배치간격비율( 작을수록 촘촘)
     public Transform raptors;  // raptor 를 관리할 부모 오브젝트
+    public GameObject raptorPrefabs; //추가할 raptor 프리팹
     public int visibleCount; // 보여주고싶은 갯수를 입력하면 이 갯수만큼만 dino 표시
     float angleStep;
 
@@ -64,8 +65,39 @@ public class DinoPostiionController : MonoBehaviour
            
         }
 
-     
-        
+
+
+
     }
-    
+    public void SetDoorCalc(DoorType doorType, int doorNumber)
+        //값을 받아서 계산할수있는 함수
+    {
+        if (doorType.Equals(DoorType.Plus))
+        {
+            PlusRaptor(doorNumber);
+        }
+        else if (doorType.Equals(DoorType.Minus))
+        {
+
+        }
+        else if (doorType.Equals(DoorType.Times))
+        {
+
+        }
+        else if (doorType.Equals(DoorType.Division))
+        {
+
+        }
+    }
+    private void PlusRaptor(int number)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            Instantiate(raptorPrefabs, raptors);
+        }
+        
+        
+
+    }
+
 }
