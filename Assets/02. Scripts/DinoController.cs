@@ -10,7 +10,7 @@ public class DinoController : MonoBehaviour
     public Vector3 sphereCenter;
     // 구체의 반지름
     public float sphereRadius = 0.5f;
-
+    public DinoPostiionController dinoPositionController;
 
     void Start()
     {
@@ -51,7 +51,11 @@ public class DinoController : MonoBehaviour
         //감지된 collider들을 처리
         foreach (Collider doors in hitColliders)
         {
-            Debug.Log("감지된 오브젝트 이름 : " + doors.gameObject.name);
+            // Debug.Log("감지된 오브젝트 이름 : " + doors.gameObject.name);
+            //여기에서 충돌한 door 타입의 문과 써진 숫자를 받아와서
+            int doorNumber = doors.gameObject.GetComponent<SelectDoors>().GetDoorNumber(transform.position.x);
+            DoorType doorType = doors.gameObject.GetComponent<SelectDoors>().GetDoorType(transform.position.x);
+            dinoPositionController.SetDoorCalc(doorType, doorNumber); //DinoPositionsController 스크립트에서 적절하게 사칙연산에 맞춰 계산해줌.
         }
     }
 
