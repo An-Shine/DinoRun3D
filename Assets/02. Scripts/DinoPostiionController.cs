@@ -78,15 +78,17 @@ public class DinoPostiionController : MonoBehaviour
         }
         else if (doorType.Equals(DoorType.Minus))
         {
-
+            MinusRaptor(doorNumber);
         }
         else if (doorType.Equals(DoorType.Times))
         {
-
+            int raptorNum = (raptors.childCount * doorNumber) - raptors.childCount;
+            PlusRaptor(raptorNum);
         }
         else if (doorType.Equals(DoorType.Division))
         {
-
+            int raptorNum = raptors.childCount - (raptors.childCount / doorNumber);
+            MinusRaptor(raptorNum);
         }
     }
     private void PlusRaptor(int number)
@@ -99,5 +101,22 @@ public class DinoPostiionController : MonoBehaviour
         
 
     }
+    private void MinusRaptor(int number)
+    {
+        if(number > raptors.childCount) //빼려는 숫자가 나의 raptor 숫자보다 클때
+        {
+            number = raptors.childCount; //자기자신의 숫자로 세팅(빼면 0이되도록)
+        }
+        int raptorNumber = raptors.childCount; // 현재 나의 raptor숫자를 구하고
+        for(int i = raptorNumber-1; i>=(raptorNumber-number); i--) // Getchild에서 가져오는게 0번부터기때문에 1빼주기
+        {
+            Destroy(raptors.GetChild(i).gameObject);  //맨마지막 오브젝트부터 삭제
+        }
+
+    }
+    
+
+
+
 
 }

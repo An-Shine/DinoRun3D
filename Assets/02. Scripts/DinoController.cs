@@ -56,6 +56,8 @@ public class DinoController : MonoBehaviour
             int doorNumber = doors.gameObject.GetComponent<SelectDoors>().GetDoorNumber(transform.position.x);
             DoorType doorType = doors.gameObject.GetComponent<SelectDoors>().GetDoorType(transform.position.x);
             dinoPositionController.SetDoorCalc(doorType, doorNumber); //DinoPositionsController 스크립트에서 적절하게 사칙연산에 맞춰 계산해줌.
+
+            doors.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
