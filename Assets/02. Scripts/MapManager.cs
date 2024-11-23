@@ -19,6 +19,10 @@ public class MapManager : MonoBehaviour
             {
                 mapPosition.z += selectedMap.GetComponent<Map>().GetMapSize() / 2; 
             }
+            else
+            {
+                selectedMap = mapPrefabs[0];   // 첫번째는 무조건 0번째배열의 인덱스의 map 이 생성된다.
+            }
             GameObject nowMap = Instantiate(selectedMap, mapPosition, Quaternion.identity);
             mapPosition.z += nowMap.GetComponent<Map>().GetMapSize() / 2; // 현재 선택된 맵의 길이의 절반 더하기
         }
