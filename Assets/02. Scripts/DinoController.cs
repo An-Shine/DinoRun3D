@@ -11,6 +11,19 @@ public class DinoController : MonoBehaviour
     // 구체의 반지름
     public float sphereRadius = 0.5f;
     public DinoPostiionController dinoPositionController;
+    public static DinoController instance;
+    public void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
@@ -20,8 +33,12 @@ public class DinoController : MonoBehaviour
     
     void Update()
     {
-        DinoMove();
-        DoorCheck();
+        if(GameManager.instance.isGameStart.Equals(true))
+        {
+            DinoMove();
+            DoorCheck();
+        }
+        
     }
 
     void DinoMove()
