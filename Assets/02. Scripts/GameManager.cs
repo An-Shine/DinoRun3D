@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     
     public GameObject TitlePanel;
     public Slider progressBar;
-
+    public GameObject goalObject;
+    public GameObject Dino;
     public void Awake()
     {
         if (instance != null)
@@ -47,6 +48,11 @@ public class GameManager : MonoBehaviour
     }
     public void SetDistanceProgressBar() //프로그래스 바 세팅함수
     {
-
+        if(isGameStart.Equals(true))
+        {
+            //전체거리중 Dino 의 위치 거리 비율
+            float goalDistance = Dino.transform.position.z / goalObject.transform.position.z;
+            progressBar.value = goalDistance;
+        }
     }
 }
